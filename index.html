@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aryan Naveen — Software Engineer</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <span class="logo">AN</span>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact" class="btn-nav">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-content">
+      <p class="eyebrow">Hi, I'm</p>
+      <h1>Aryan Naveen</h1>
+      <h2>Full Stack Developer &amp; Cloud Enthusiast</h2>
+      <p class="hero-sub">
+        Building scalable web applications with the MERN stack and deploying
+        resilient infrastructure on AWS.
+      </p>
+      <div class="hero-actions">
+        <a href="#experience" class="btn-primary">View My Work</a>
+        <a href="#contact" class="btn-secondary">Get In Touch</a>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="blob"></div>
+      <div class="code-card">
+        <div class="code-dot red"></div>
+        <div class="code-dot yellow"></div>
+        <div class="code-dot green"></div>
+        <pre><code><span class="kw">const</span> aryan = {
+  role: <span class="str">"Full Stack Dev"</span>,
+  stack: [<span class="str">"MongoDB"</span>, <span class="str">"Express"</span>,
+          <span class="str">"React"</span>, <span class="str">"Node.js"</span>],
+  cloud: <span class="str">"AWS"</span>,
+  degree: <span class="str">"B.E. Software @ UNSW"</span>
+};</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <h3 class="section-label">About Me</h3>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            I'm a Software Engineering student at UNSW with hands-on experience in
+            full stack development and cloud infrastructure. I love crafting
+            end-to-end solutions — from designing RESTful APIs to deploying
+            production systems on AWS.
+          </p>
+          <p>
+            My time as a Cloud Consultant intern gave me real-world exposure to
+            enterprise-scale migrations, reinforcing my belief that well-architected
+            cloud infrastructure is the backbone of modern software.
+          </p>
+        </div>
+        <div class="about-stats">
+          <div class="stat-card">
+            <span class="stat-num">MERN</span>
+            <span class="stat-label">Primary Stack</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">AWS</span>
+            <span class="stat-label">Cloud Platform</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">UNSW</span>
+            <span class="stat-label">University</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="container">
+      <div class="section-header">
+        <h3 class="section-label">Experience</h3>
+        <p class="section-notice">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Projects hosted on Render's free tier may take ~1 minute to spin up on first load.
+        </p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="job-header">
+              <div>
+                <h4 class="job-title">
+                  BizComm
+                  <a href="https://bizcommfe.onrender.com/" target="_blank" rel="noopener noreferrer" class="project-link" title="View customer frontend">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                  </a>
+                  <a href="https://bizzcomm-demo.onrender.com/customers" target="_blank" rel="noopener noreferrer" class="project-link" title="View business admin backend">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                  </a>
+                </h4>
+                <p class="job-company">Personal Project</p>
+              </div>
+              <span class="job-date">MERN · AWS EC2</span>
+            </div>
+            <ul class="job-bullets">
+              <li>
+                Built a full stack business marketing and loyalty platform enabling
+                businesses to enhance their brand presence and engage customers.
+              </li>
+              <li>
+                <strong>Customer portal:</strong> lets customers redeem deals and
+                track loyalty points.
+              </li>
+              <li>
+                <strong>Admin dashboard:</strong> allows business owners to add
+                customers, assign points, create deals, and monitor usage and
+                transaction data.
+              </li>
+              <li>
+                Integrated email and SMS messaging so businesses can reach
+                customers directly and broaden their reach.
+              </li>
+            </ul>
+            <div class="tag-row">
+              <span class="tag">MongoDB</span>
+              <span class="tag">Express.js</span>
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">AWS EC2</span>
+              <span class="tag">Email &amp; SMS</span>
+            </div>
+            <p class="project-note">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              Demo passcodes — Communication: <strong>0000</strong> · Admin: <strong>admin123</strong>
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="job-header">
+              <div>
+                <h4 class="job-title">
+                  ClockOut
+                  <a href="https://clockout-1-ldxx.onrender.com/login" target="_blank" rel="noopener noreferrer" class="project-link" title="View live project">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                  </a>
+                </h4>
+                <p class="job-company">Personal Project</p>
+              </div>
+              <span class="job-date">MERN · Render</span>
+            </div>
+            <ul class="job-bullets">
+              <li>
+                Built and deployed a full stack employee time-tracking application
+                using the MERN stack, hosted on Render for a local business.
+              </li>
+              <li>
+                Employees can clock in and out; admins access auto-generated
+                spreadsheets with clock-in/out records, hours worked, and wage
+                calculations.
+              </li>
+              <li>
+                Implemented role-based access control to separate employee and
+                admin views, and designed a REST API with Express and MongoDB to
+                persist all shift data.
+              </li>
+            </ul>
+            <p class="project-note">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              Demo login passcode: <strong>0000</strong>
+            </p>
+            <div class="tag-row">
+              <span class="tag">MongoDB</span>
+              <span class="tag">Express.js</span>
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">Render</span>
+              <span class="tag">REST API</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="job-header">
+              <div>
+                <h4 class="job-title">
+                  Evolve Cloud Labs — Marketing Website
+                  <a href="https://evolvecloudlabs.com.au/" target="_blank" rel="noopener noreferrer" class="project-link" title="View live site">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                  </a>
+                </h4>
+                <p class="job-company">Freelance Project</p>
+              </div>
+              <span class="job-date">MERN · AWS EC2</span>
+            </div>
+            <ul class="job-bullets">
+              <li>
+                Designed and developed a marketing website for a cloud consultancy
+                to showcase their services and increase online exposure.
+              </li>
+              <li>
+                Deployed on AWS EC2 using the MERN stack, delivering fast load
+                times alongside enhanced visuals and graphics.
+              </li>
+            </ul>
+            <div class="tag-row">
+              <span class="tag">MongoDB</span>
+              <span class="tag">Express.js</span>
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">AWS EC2</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="job-header">
+              <div>
+                <h4 class="job-title">Cloud Consultant Intern</h4>
+                <p class="job-company">Cevo</p>
+              </div>
+              <span class="job-date">Internship</span>
+            </div>
+            <ul class="job-bullets">
+              <li>
+                Collaborated with cross-functional teams to migrate databases and
+                legacy systems from on-premises infrastructure to AWS.
+              </li>
+              <li>
+                Assessed existing architectures to plan and execute cloud migration
+                strategies, ensuring minimal downtime and data integrity.
+              </li>
+              <li>
+                Gained practical experience with AWS services including EC2, RDS,
+                S3, and IAM as part of enterprise-level migration projects.
+              </li>
+            </ul>
+            <div class="tag-row">
+              <span class="tag">AWS</span>
+              <span class="tag">Cloud Migration</span>
+              <span class="tag">EC2</span>
+              <span class="tag">RDS</span>
+              <span class="tag">S3</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <h3 class="section-label">Skills</h3>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h4>Frontend</h4>
+          <div class="tag-row">
+            <span class="tag">React</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">HTML &amp; CSS</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Backend</h4>
+          <div class="tag-row">
+            <span class="tag">Node.js</span>
+            <span class="tag">Express.js</span>
+            <span class="tag">REST APIs</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Database</h4>
+          <div class="tag-row">
+            <span class="tag">MongoDB</span>
+            <span class="tag">SQL</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Cloud &amp; DevOps</h4>
+          <div class="tag-row">
+            <span class="tag">AWS</span>
+            <span class="tag">EC2</span>
+            <span class="tag">S3</span>
+            <span class="tag">RDS</span>
+            <span class="tag">IAM</span>
+            <span class="tag">Git</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="container">
+      <h3 class="section-label">Education</h3>
+      <div class="edu-card">
+        <div class="edu-icon">🎓</div>
+        <div class="edu-details">
+          <h4>Bachelor of Engineering (Software)</h4>
+          <p class="edu-school">University of New South Wales (UNSW)</p>
+          <p class="edu-sub">Sydney, Australia</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container contact-inner">
+      <h3 class="section-label">Get In Touch</h3>
+      <p class="contact-sub">
+        I'm currently open to new opportunities. Whether you have a role in mind
+        or just want to connect, feel free to reach out.
+      </p>
+      <a href="mailto:aryannaveenbusiness@gmail.com" class="btn-primary">Say Hello</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Designed &amp; built by Aryan Naveen &copy; 2025</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
