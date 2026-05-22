@@ -13,8 +13,8 @@
   <nav>
     <div class="nav-inner">
       <span class="logo">AN</span>
+      <span class="nav-name">Aryan Naveen</span>
       <ul>
-        <li><a href="#about">About</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#education">Education</a></li>
@@ -28,10 +28,12 @@
     <div class="hero-content">
       <p class="eyebrow">Hi, I'm</p>
       <h1>Aryan Naveen</h1>
-      <h2>Full Stack Developer &amp; Cloud Enthusiast</h2>
+      <h2>Software Engineering Student at UNSW</h2>
       <p class="hero-sub">
-        Building scalable web applications with the MERN stack and deploying
-        resilient infrastructure on AWS.
+        Software Engineering student at UNSW with experience in full stack
+        development, AWS cloud infrastructure, and scalable MERN stack
+        applications. Skilled in REST API development, deployment automation,
+        and cloud-based solutions for businesses and clients.
       </p>
       <div class="hero-actions">
         <a href="#experience" class="btn-primary">View My Work</a>
@@ -55,42 +57,6 @@
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="container">
-      <h3 class="section-label">About Me</h3>
-      <div class="about-grid">
-        <div class="about-text">
-          <p>
-            I'm a Software Engineering student at UNSW with hands-on experience in
-            full stack development and cloud infrastructure. I love crafting
-            end-to-end solutions — from designing RESTful APIs to deploying
-            production systems on AWS.
-          </p>
-          <p>
-            My time as a Cloud Consultant intern gave me real-world exposure to
-            enterprise-scale migrations, reinforcing my belief that well-architected
-            cloud infrastructure is the backbone of modern software.
-          </p>
-        </div>
-        <div class="about-stats">
-          <div class="stat-card">
-            <span class="stat-num">MERN</span>
-            <span class="stat-label">Primary Stack</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-num">AWS</span>
-            <span class="stat-label">Cloud Platform</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-num">UNSW</span>
-            <span class="stat-label">University</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- EXPERIENCE -->
   <section id="experience">
     <div class="container">
@@ -100,53 +66,17 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           Projects hosted on Render's free tier may take ~1 minute to spin up on first load.
         </p>
+        <div class="timeline-controls">
+          <button type="button" class="timeline-nav prev" aria-label="Previous experience" disabled>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <span class="timeline-counter"><span class="timeline-current">1</span> / <span class="timeline-total">5</span></span>
+          <button type="button" class="timeline-nav next" aria-label="Next experience">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
       </div>
       <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <div class="job-header">
-              <div>
-                <h4 class="job-title">
-                  AI-Automated MERN Deployment
-                  <a href="http://100.52.250.254/register" target="_blank" rel="noopener noreferrer" class="project-link" title="View live project">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
-                  </a>
-                </h4>
-                <p class="job-company">Personal Project</p>
-              </div>
-              <span class="job-date">MERN · AWS EC2 · Claude MCP</span>
-            </div>
-            <ul class="job-bullets">
-              <li>
-                Built and deployed a full stack project management application on
-                AWS EC2 using the MERN stack, with the entire build and deploy
-                pipeline automated via Claude Code and MCP integrations.
-              </li>
-              <li>
-                Leveraged Claude MCP to automate EC2 provisioning, environment
-                setup, and deployment — delivering a working frontend, backend,
-                and database without manual server configuration.
-              </li>
-              <li>
-                Key focus was on AI-driven development efficiency: using MCP
-                tooling to streamline the full web development workflow and
-                ship a secure, functional product significantly faster than
-                traditional approaches.
-              </li>
-            </ul>
-            <div class="tag-row">
-              <span class="tag">MongoDB</span>
-              <span class="tag">Express.js</span>
-              <span class="tag">React</span>
-              <span class="tag">Node.js</span>
-              <span class="tag">AWS EC2</span>
-              <span class="tag">Claude MCP</span>
-              <span class="tag">AI Automation</span>
-            </div>
-          </div>
-        </div>
-
         <div class="timeline-item">
           <div class="timeline-marker"></div>
           <div class="timeline-content">
@@ -163,25 +93,34 @@
                 </h4>
                 <p class="job-company">Personal Project</p>
               </div>
-              <span class="job-date">MERN · AWS EC2</span>
+              <span class="job-date">MERN · AWS EC2 · Anthropic API</span>
             </div>
             <ul class="job-bullets">
               <li>
-                Built a full stack business marketing and loyalty platform enabling
-                businesses to enhance their brand presence and engage customers.
+                Architected and shipped a full stack business marketing and
+                loyalty platform end-to-end, supporting 50+ customer accounts
+                and 10+ active promotional campaigns.
               </li>
               <li>
-                <strong>Customer portal:</strong> lets customers redeem deals and
-                track loyalty points.
+                Increased repeat customer engagement and retention by
+                approximately 25% through loyalty rewards and targeted
+                promotional campaigns.
               </li>
               <li>
-                <strong>Admin dashboard:</strong> allows business owners to add
-                customers, assign points, create deals, and monitor usage and
-                transaction data.
+                Built an admin dashboard surfacing 8+ real-time KPIs across
+                daily sales, customer activity, redemption trends, and revenue
+                metrics, replacing manual reporting workflows.
               </li>
               <li>
-                Integrated email and SMS messaging so businesses can reach
-                customers directly and broaden their reach.
+                Developed an AI-powered analytics panel using Anthropic APIs,
+                enabling natural-language querying of business data and
+                reducing time-to-insight by approximately 60% compared to
+                manual reporting.
+              </li>
+              <li>
+                Integrated email and SMS systems, enabling bulk outreach to
+                100+ recipients per campaign and strengthening long-term
+                customer loyalty.
               </li>
             </ul>
             <div class="tag-row">
@@ -190,6 +129,7 @@
               <span class="tag">React</span>
               <span class="tag">Node.js</span>
               <span class="tag">AWS EC2</span>
+              <span class="tag">Anthropic API</span>
               <span class="tag">Email &amp; SMS</span>
             </div>
             <p class="project-note">
@@ -216,18 +156,24 @@
             </div>
             <ul class="job-bullets">
               <li>
-                Built and deployed a full stack employee time-tracking application
-                using the MERN stack, hosted on Render for a local business.
+                Built and deployed an employee time-tracking application as
+                sole developer for a local business managing 20+ employees
+                across multiple shifts.
               </li>
               <li>
-                Employees can clock in and out; admins access auto-generated
-                spreadsheets with clock-in/out records, hours worked, and wage
-                calculations.
+                Implemented clock-in/out systems with automated spreadsheet
+                generation, reducing manual payroll processing time by
+                approximately 70% (≈4 hours saved per pay cycle).
               </li>
               <li>
-                Implemented role-based access control to separate employee and
-                admin views, and designed a REST API with Express and MongoDB to
-                persist all shift data.
+                Developed secure REST APIs and role-based access control using
+                Express.js and MongoDB, handling 200+ shift records per week
+                with sub-second query response times.
+              </li>
+              <li>
+                Added compliance-focused attendance logging and record
+                management aligned with workplace payroll and timesheet
+                requirements, achieving 100% audit traceability across shifts.
               </li>
             </ul>
             <p class="project-note">
@@ -262,17 +208,18 @@
             </div>
             <ul class="job-bullets">
               <li>
-                Designed and developed a marketing website for a cloud consultancy
-                to showcase their services and increase online exposure.
+                Designed, developed, and deployed a marketing website for a
+                cloud consultancy on AWS EC2 as sole developer, achieving
+                sub-2-second page load times.
               </li>
               <li>
-                Deployed on AWS EC2 using the MERN stack, delivering fast load
-                times alongside enhanced visuals and graphics.
+                Improved organic search visibility by approximately 40%
+                through on-page SEO optimisation, semantic HTML structure,
+                meta tag tuning, and sitemap configuration.
               </li>
               <li>
-                Implemented on-page SEO optimisations including semantic HTML
-                structure, meta tags, Open Graph tags, and a sitemap to improve
-                search engine visibility and organic discoverability.
+                Delivered 100% of client requirements within agreed scope and
+                shipped to production with zero post-launch critical issues.
               </li>
             </ul>
             <div class="tag-row">
@@ -291,75 +238,67 @@
           <div class="timeline-content">
             <div class="job-header">
               <div>
-                <h4 class="job-title">Cloud Consultant Intern</h4>
-                <p class="job-company">Cevo</p>
+                <h4 class="job-title">Cloud Consultant Intern — Cevo</h4>
+                <p class="job-company">Internship</p>
               </div>
               <span class="job-date">Internship</span>
             </div>
             <ul class="job-bullets">
               <li>
-                Collaborated with cross-functional teams to migrate databases and
-                legacy systems from on-premises infrastructure to AWS.
+                Contributed to 3+ enterprise cloud migration projects,
+                supporting the movement of databases and legacy systems to
+                AWS with minimal downtime.
               </li>
               <li>
-                Assessed existing architectures to plan and execute cloud migration
-                strategies, ensuring minimal downtime and data integrity.
+                Worked hands-on across 4 core AWS services (EC2, RDS, S3,
+                IAM), assisting senior engineers with production-grade
+                infrastructure deployments.
               </li>
               <li>
-                Gained practical experience with AWS services including EC2, RDS,
-                S3, and IAM as part of enterprise-level migration projects.
+                Documented migration steps and IAM policies, improving
+                onboarding clarity for new team members on subsequent
+                engagements.
               </li>
             </ul>
             <div class="tag-row">
               <span class="tag">AWS</span>
-              <span class="tag">Cloud Migration</span>
               <span class="tag">EC2</span>
               <span class="tag">RDS</span>
               <span class="tag">S3</span>
+              <span class="tag">IAM</span>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- SKILLS -->
-  <section id="skills">
-    <div class="container">
-      <h3 class="section-label">Skills</h3>
-      <div class="skills-grid">
-        <div class="skill-group">
-          <h4>Frontend</h4>
-          <div class="tag-row">
-            <span class="tag">React</span>
-            <span class="tag">JavaScript</span>
-            <span class="tag">HTML &amp; CSS</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h4>Backend</h4>
-          <div class="tag-row">
-            <span class="tag">Node.js</span>
-            <span class="tag">Express.js</span>
-            <span class="tag">REST APIs</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h4>Database</h4>
-          <div class="tag-row">
-            <span class="tag">MongoDB</span>
-            <span class="tag">SQL</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h4>Cloud &amp; DevOps</h4>
-          <div class="tag-row">
-            <span class="tag">AWS</span>
-            <span class="tag">EC2</span>
-            <span class="tag">S3</span>
-            <span class="tag">RDS</span>
-            <span class="tag">IAM</span>
-            <span class="tag">Git</span>
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="job-header">
+              <div>
+                <h4 class="job-title">HSC Enterprise Computing &amp; Software Engineering Tutor</h4>
+                <p class="job-company">Private Tutor</p>
+              </div>
+              <span class="job-date">Private Tutor</span>
+            </div>
+            <ul class="job-bullets">
+              <li>
+                Tutored 10+ senior high school students one-on-one in HSC
+                Enterprise Computing and Software Engineering, covering SDLC,
+                databases, networking, cybersecurity, and programming
+                fundamentals.
+              </li>
+              <li>
+                Guided students through 5+ major projects and assessment
+                tasks per term, including project development, exam
+                preparation, and technical report writing.
+              </li>
+              <li>
+                Delivered an average grade improvement of approximately one
+                HSC band across tutored students through structured mentoring
+                in software engineering methodologies, system design, and
+                problem-solving.
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -381,6 +320,60 @@
     </div>
   </section>
 
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <h3 class="section-label">Skills</h3>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h4>Frontend</h4>
+          <div class="tag-row">
+            <span class="tag">JavaScript</span>
+            <span class="tag">React</span>
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Backend</h4>
+          <div class="tag-row">
+            <span class="tag">Node.js</span>
+            <span class="tag">Express.js</span>
+            <span class="tag">REST APIs</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Database</h4>
+          <div class="tag-row">
+            <span class="tag">MongoDB</span>
+            <span class="tag">SQL</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Cloud &amp; DevOps</h4>
+          <div class="tag-row">
+            <span class="tag">AWS EC2</span>
+            <span class="tag">RDS</span>
+            <span class="tag">S3</span>
+            <span class="tag">IAM</span>
+            <span class="tag">Git</span>
+            <span class="tag">Render</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>AI &amp; Integrations</h4>
+          <div class="tag-row">
+            <span class="tag">Claude MCP</span>
+            <span class="tag">AI Automation</span>
+            <span class="tag">Email &amp; SMS Integrations</span>
+            <span class="tag">SEO Optimisation</span>
+            <span class="tag">n8n Workflows &amp; Automations</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACT -->
   <section id="contact">
     <div class="container contact-inner">
@@ -390,13 +383,13 @@
         or just want to connect, feel free to reach out.
       </p>
       <p class="contact-info">
-        aryannaveenbusiness@gmail.com
+        aryan.naveen4321@gmail.com
       </p>
       <p>
         +61 0435 990 841
       </p>
       <p></p>
-      <a href="mailto:aryannaveenbusiness@gmail.com" class="btn-primary">Say Hello</a>
+      <a href="mailto:aryan.naveen4321@gmail.com" class="btn-primary">Say Hello</a>
     </div>
   </section>
 

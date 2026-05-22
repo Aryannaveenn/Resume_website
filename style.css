@@ -2,34 +2,86 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #0d0d0f;
-  --surface: #16161a;
-  --surface2: #1e1e24;
-  --border: #2a2a32;
-  --accent: #6c63ff;
-  --accent-light: #8b85ff;
-  --accent-glow: rgba(108, 99, 255, 0.15);
-  --text: #e8e8f0;
-  --text-muted: #8888a0;
-  --text-dim: #555568;
+  --bg: #07091a;
+  --surface: #111630;
+  --surface2: #181e3c;
+  --border: #2a3252;
+  --accent: #22d3ee;
+  --accent-light: #67e8f9;
+  --accent-glow: rgba(34, 211, 238, 0.22);
+  --accent2: #f472b6;
+  --accent2-light: #f9a8d4;
+  --accent2-glow: rgba(244, 114, 182, 0.22);
+  --text: #eaeef9;
+  --text-muted: #9aa3c0;
+  --text-dim: #5d6688;
   --green: #4ade80;
   --yellow: #fbbf24;
   --red: #f87171;
   --font: 'Inter', system-ui, sans-serif;
   --radius: 12px;
   --radius-sm: 6px;
-  --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
 }
 
 html { scroll-behavior: smooth; }
 
 body {
   background: var(--bg);
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 1px, transparent 0);
+  background-size: 28px 28px;
+  background-attachment: fixed;
   color: var(--text);
   font-family: var(--font);
   font-size: 16px;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: -1;
+  will-change: transform;
+}
+
+body::before {
+  top: -220px;
+  left: -180px;
+  width: 620px;
+  height: 620px;
+  background: radial-gradient(circle, var(--accent-glow), transparent 70%);
+  animation: drift-a 22s ease-in-out infinite alternate;
+}
+
+body::after {
+  bottom: -240px;
+  right: -200px;
+  width: 720px;
+  height: 720px;
+  background: radial-gradient(circle, var(--accent2-glow), transparent 70%);
+  animation: drift-b 26s ease-in-out infinite alternate;
+}
+
+@keyframes drift-a {
+  0%   { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(220px, 160px) scale(1.15); }
+}
+
+@keyframes drift-b {
+  0%   { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-220px, -140px) scale(1.1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before, body::after { animation: none; }
 }
 
 /* ===== NAV ===== */
@@ -37,8 +89,9 @@ nav {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 100;
-  background: rgba(13, 13, 15, 0.8);
-  backdrop-filter: blur(12px);
+  background: rgba(7, 9, 26, 0.7);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border);
 }
 
@@ -50,12 +103,26 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+}
+
+.nav-name {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  pointer-events: none;
 }
 
 .logo {
   font-size: 1.25rem;
   font-weight: 700;
-  background: linear-gradient(135deg, var(--accent), var(--accent-light));
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -151,7 +218,7 @@ h1 {
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1.1;
-  background: linear-gradient(135deg, #fff 30%, var(--accent-light));
+  background: linear-gradient(135deg, #fff 20%, var(--accent-light) 60%, var(--accent2-light) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -230,9 +297,12 @@ h2 {
   width: 320px;
   height: 320px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(108, 99, 255, 0.25), transparent 70%);
-  filter: blur(40px);
-  animation: pulse 6s ease-in-out infinite;
+  background: conic-gradient(from 180deg at 50% 50%,
+    rgba(34, 211, 238, 0.35),
+    rgba(244, 114, 182, 0.3),
+    rgba(34, 211, 238, 0.35));
+  filter: blur(45px);
+  animation: pulse 8s ease-in-out infinite;
 }
 
 @keyframes pulse {
@@ -369,31 +439,75 @@ h2 {
 
 .timeline {
   position: relative;
-  padding-left: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.5rem 0.25rem 0.5rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
 }
 
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 8px; bottom: 0;
-  width: 1px;
-  background: var(--border);
+.timeline::-webkit-scrollbar {
+  display: none;
 }
 
 .timeline-item {
   position: relative;
-  margin-bottom: 3rem;
+  flex: 0 0 100%;
+  width: 100%;
+  scroll-snap-align: start;
+  display: flex;
+}
+
+.timeline-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-left: auto;
+}
+
+.timeline-nav {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, color 0.2s, transform 0.15s;
+}
+
+.timeline-nav:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent-light);
+  transform: translateY(-1px);
+}
+
+.timeline-nav:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.timeline-counter {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  min-width: 38px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.timeline-current {
+  color: var(--accent-light);
+  font-weight: 600;
 }
 
 .timeline-marker {
-  position: absolute;
-  left: -2.4rem;
-  top: 6px;
-  width: 14px; height: 14px;
-  background: var(--accent);
-  border: 2px solid var(--bg);
-  border-radius: 50%;
-  box-shadow: 0 0 0 3px var(--accent-glow);
+  display: none;
 }
 
 .timeline-content {
@@ -402,6 +516,9 @@ h2 {
   border-radius: var(--radius);
   padding: 1.75rem 2rem;
   transition: border-color 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .timeline-content:hover {
@@ -669,4 +786,5 @@ footer {
 
   nav ul { gap: 1rem; }
   nav ul li:not(:last-child) { display: none; }
+  .nav-name { display: none; }
 }

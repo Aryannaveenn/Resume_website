@@ -1,7 +1,7 @@
 // Scroll reveal
 const revealEls = document.querySelectorAll(
   '#about, #experience, #skills, #education, #contact, ' +
-  '.timeline-item, .skill-group, .stat-card, .edu-card'
+  '.skill-group, .stat-card, .edu-card'
 );
 
 revealEls.forEach(el => el.classList.add('reveal'));
@@ -35,3 +35,48 @@ window.addEventListener('scroll', () => {
     }
   });
 }, { passive: true });
+
+// Experience carousel
+const timeline = document.querySelector('.timeline');
+const prevBtn = document.querySelector('.timeline-nav.prev');
+const nextBtn = document.querySelector('.timeline-nav.next');
+const currentLabel = document.querySelector('.timeline-current');
+const totalLabel = document.querySelector('.timeline-total');
+
+if (timeline && prevBtn && nextBtn) {
+  const items = timeline.querySelectorAll('.timeline-item');
+  const total = items.length;
+  if (totalLabel) totalLabel.textContent = total;
+
+  const getIndex = () => {
+    const step = timeline.scrollWidth / total;
+    return Math.round(timeline.scrollLeft / step);
+  };
+
+  const update = () => {
+    const idx = getIndex();
+    if (currentLabel) currentLabel.textContent = idx + 1;
+    prevBtn.disabled = idx <= 0;
+    nextBtn.disabled = idx >= total - 1;
+  };
+
+  const scrollToIndex = idx => {
+    const clamped = Math.max(0, Math.min(total - 1, idx));
+    const target = items[clamped];
+    if (target) {
+      timeline.scrollTo({ left: target.offsetLeft, behavior: 'smooth' });
+    }
+  };
+
+  prevBtn.addEventListener('click', () => scrollToIndex(getIndex() - 1));
+  nextBtn.addEventListener('click', () => scrollToIndex(getIndex() + 1));
+
+  let scrollTimer;
+  timeline.addEventListener('scroll', () => {
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(update, 80);
+  }, { passive: true });
+
+  window.addEventListener('resize', update);
+  update();
+}
