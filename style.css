@@ -1,6 +1,14 @@
 /* ===== RESET & BASE ===== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* Register --day-mix as a typed percentage so color-mix() resolves var() correctly
+   in all browsers that support color-mix (Chrome 111+, FF 113+, Safari 16.2+). */
+@property --day-mix {
+  syntax: '<percentage>';
+  initial-value: 0%;
+  inherits: true;
+}
+
 :root {
   /*
    * --day-mix controls the continuous blend between night (0%) and day (100%).
