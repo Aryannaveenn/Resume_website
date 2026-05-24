@@ -4,10 +4,40 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aryan Naveen — Software Engineer</title>
+  <script>
+    // Set --day-mix before first paint to avoid a flash.
+    // Transition zones: dawn 5–7 am, dusk 5–7 pm.
+    (function () {
+      var h = new Date().getHours() + new Date().getMinutes() / 60;
+      var mix = h < 5 ? 0 : h < 7 ? (h - 5) / 2 : h < 17 ? 1 : h < 19 ? (19 - h) / 2 : 0;
+      document.documentElement.style.setProperty('--day-mix', (mix * 100).toFixed(1) + '%');
+    })();
+  </script>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
+
+  <!-- BACKGROUND CELESTIALS -->
+  <div class="bg-sun" id="bg-sun"></div>
+  <div class="bg-moon" id="bg-moon"></div>
+
+  <!-- TIME BAR -->
+  <div class="time-bar" id="time-bar">
+    <div class="celestial-body is-day" id="celestial">☀️</div>
+    <input type="range" id="time-slider" min="0" max="1439" value="720" aria-label="Time of day">
+    <div class="time-display">
+      <span class="time-hm" id="time-hm">12:00</span>
+      <span class="time-period" id="time-period">PM</span>
+    </div>
+    <div class="time-ticks">
+      <span>12am</span>
+      <span>6am</span>
+      <span>12pm</span>
+      <span>6pm</span>
+      <span>12am</span>
+    </div>
+  </div>
 
   <!-- NAV -->
   <nav>

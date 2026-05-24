@@ -2,26 +2,194 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #07091a;
-  --surface: #111630;
-  --surface2: #181e3c;
-  --border: #2a3252;
-  --accent: #22d3ee;
-  --accent-light: #67e8f9;
-  --accent-glow: rgba(34, 211, 238, 0.22);
-  --accent2: #f472b6;
-  --accent2-light: #f9a8d4;
-  --accent2-glow: rgba(244, 114, 182, 0.22);
-  --text: #eaeef9;
-  --text-muted: #9aa3c0;
-  --text-dim: #5d6688;
-  --green: #4ade80;
-  --yellow: #fbbf24;
-  --red: #f87171;
-  --font: 'Inter', system-ui, sans-serif;
-  --radius: 12px;
+  /*
+   * --day-mix controls the continuous blend between night (0%) and day (100%).
+   * Set by JS in real-time; colour-mix() blends every token automatically.
+   */
+  --day-mix: 0%;
+
+  /* ── Blended colour tokens ────────────────────────────────── */
+  --bg:           color-mix(in srgb, #f1f5fb var(--day-mix), #07091a);
+  --surface:      color-mix(in srgb, #ffffff var(--day-mix), #111630);
+  --surface2:     color-mix(in srgb, #eef2f9 var(--day-mix), #181e3c);
+  --border:       color-mix(in srgb, #d8dfec var(--day-mix), #2a3252);
+
+  --accent:       color-mix(in srgb, #d97706 var(--day-mix), #22d3ee);
+  --accent-light: color-mix(in srgb, #f59e0b var(--day-mix), #67e8f9);
+  --accent-glow:  color-mix(in srgb, rgba(217,119,6,0.25)  var(--day-mix), rgba(34,211,238,0.22));
+
+  --accent2:      color-mix(in srgb, #2563eb var(--day-mix), #f472b6);
+  --accent2-light:color-mix(in srgb, #3b82f6 var(--day-mix), #f9a8d4);
+  --accent2-glow: color-mix(in srgb, rgba(37,99,235,0.22)  var(--day-mix), rgba(244,114,182,0.22));
+
+  --text:         color-mix(in srgb, #0f172a var(--day-mix), #eaeef9);
+  --text-muted:   color-mix(in srgb, #475569 var(--day-mix), #9aa3c0);
+  --text-dim:     color-mix(in srgb, #94a3b8 var(--day-mix), #5d6688);
+
+  --green:        color-mix(in srgb, #16a34a var(--day-mix), #4ade80);
+  --yellow:       color-mix(in srgb, #ca8a04 var(--day-mix), #fbbf24);
+  --red:          color-mix(in srgb, #dc2626 var(--day-mix), #f87171);
+
+  --nav-bg:       color-mix(in srgb, rgba(255,255,255,0.75) var(--day-mix), rgba(7,9,26,0.7));
+  --dot-color:    color-mix(in srgb, rgba(15,23,42,0.06)   var(--day-mix), rgba(255,255,255,0.05));
+  --shadow:       0 4px 24px color-mix(in srgb, rgba(15,23,42,0.12) var(--day-mix), rgba(0,0,0,0.5));
+
+  --code-kw:      color-mix(in srgb, #9333ea var(--day-mix), #c792ea);
+  --code-str:     color-mix(in srgb, #15803d var(--day-mix), #c3e88d);
+  --btn-text:     #fff;
+
+  /* ── Static tokens ───────────────────────────────────────── */
+  --font:      'Inter', system-ui, sans-serif;
+  --radius:    12px;
   --radius-sm: 6px;
-  --shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+  --bar-height: 44px;
+}
+
+/* ===== TIME BAR ===== */
+.time-bar {
+  position: fixed;
+  top: 64px; left: 0; right: 0;
+  height: var(--bar-height);
+  z-index: 99;
+  background: linear-gradient(to right,
+    #05081a 0%,
+    #0a1240 10%,
+    #1b3680 20%,
+    #e8603c 25%,
+    #f9a84b 30%,
+    #5bb8e8 37%,
+    #3399d6 50%,
+    #5bb8e8 63%,
+    #f9a84b 70%,
+    #e8603c 75%,
+    #a02860 80%,
+    #1a083a 87%,
+    #05081a 100%
+  );
+  overflow: hidden;
+}
+
+/* right-side fade for time label readability */
+.time-bar::before {
+  content: '';
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
+  width: 90px;
+  background: linear-gradient(to right, transparent, rgba(0,0,0,0.35));
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* top shadow — blends with nav above */
+.time-bar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+#time-slider {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: ew-resize;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  z-index: 3;
+}
+
+#time-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+}
+
+#time-slider::-moz-range-thumb {
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: none;
+}
+
+.celestial-body {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  line-height: 1;
+  pointer-events: none;
+  z-index: 2;
+  will-change: left;
+}
+
+.celestial-body.is-day {
+  filter: drop-shadow(0 0 8px rgba(255,210,60,0.95))
+          drop-shadow(0 0 18px rgba(255,140,0,0.55));
+}
+
+.celestial-body.is-night {
+  filter: drop-shadow(0 0 8px rgba(180,205,255,0.9))
+          drop-shadow(0 0 16px rgba(100,150,255,0.45));
+}
+
+.time-display {
+  position: absolute;
+  right: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0;
+}
+
+.time-display .time-hm {
+  font-family: var(--font);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.7);
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+}
+
+.time-display .time-period {
+  font-family: var(--font);
+  font-size: 0.58rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.65);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.time-ticks {
+  position: absolute;
+  bottom: 4px;
+  left: 0.6rem;
+  right: 5.5rem;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.time-ticks span {
+  font-family: var(--font);
+  font-size: 0.5rem;
+  color: rgba(255,255,255,0.4);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.9);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 html { scroll-behavior: smooth; }
@@ -29,7 +197,7 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
   background-image:
-    radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 1px, transparent 0);
+    radial-gradient(circle at 1px 1px, var(--dot-color) 1px, transparent 0);
   background-size: 28px 28px;
   background-attachment: fixed;
   color: var(--text);
@@ -89,7 +257,7 @@ nav {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 100;
-  background: rgba(7, 9, 26, 0.7);
+  background: var(--nav-bg);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border);
@@ -148,7 +316,7 @@ nav a:hover { color: var(--text); }
 
 .btn-nav {
   background: var(--accent);
-  color: #fff !important;
+  color: var(--btn-text) !important;
   padding: 0.45rem 1.1rem;
   border-radius: 50px;
   font-size: 0.85rem !important;
@@ -195,7 +363,7 @@ nav a:hover { color: var(--text); }
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: 8rem 2rem 4rem;
+  padding: calc(8rem + var(--bar-height)) 2rem 4rem;
   max-width: 1100px;
   margin: 0 auto;
   gap: 4rem;
@@ -218,7 +386,11 @@ h1 {
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1.1;
-  background: linear-gradient(135deg, #fff 20%, var(--accent-light) 60%, var(--accent2-light) 100%);
+  background: linear-gradient(135deg,
+    color-mix(in srgb, #0f172a var(--day-mix), #ffffff) 15%,
+    color-mix(in srgb, #b45309 var(--day-mix), #67e8f9) 55%,
+    color-mix(in srgb, #1d4ed8 var(--day-mix), #f9a8d4) 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -248,7 +420,7 @@ h2 {
 .btn-primary {
   display: inline-block;
   background: var(--accent);
-  color: #fff;
+  color: var(--btn-text);
   text-decoration: none;
   padding: 0.75rem 1.75rem;
   border-radius: 50px;
@@ -341,8 +513,8 @@ h2 {
 .code-dot.yellow{ background: var(--yellow); }
 .code-dot.green { background: var(--green); }
 
-.kw  { color: #c792ea; }
-.str { color: #c3e88d; }
+.kw  { color: var(--code-kw); }
+.str { color: var(--code-str); }
 
 /* ===== ABOUT ===== */
 #about {
@@ -749,6 +921,55 @@ footer {
   font-size: 0.85rem;
 }
 
+/* ===== BACKGROUND CELESTIALS ===== */
+.bg-sun {
+  position: fixed;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%,
+    #fffde7 0%,
+    #ffe082 25%,
+    #ffb300 50%,
+    rgba(255, 111, 0, 0.5) 70%,
+    transparent 100%
+  );
+  box-shadow:
+    0 0 60px 30px rgba(255, 200, 50, 0.55),
+    0 0 130px 65px rgba(255, 150, 0, 0.28),
+    0 0 260px 130px rgba(255, 80, 0, 0.1);
+  filter: blur(5px);
+  pointer-events: none;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.9s ease;
+  will-change: left, top, opacity;
+}
+
+.bg-moon {
+  position: fixed;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 42% 40%,
+    #f6f9ff 0%,
+    #dde8ff 30%,
+    #aabcf0 55%,
+    rgba(140, 165, 230, 0.45) 75%,
+    transparent 100%
+  );
+  box-shadow:
+    0 0 40px 20px rgba(160, 190, 255, 0.45),
+    0 0 90px 45px rgba(120, 155, 255, 0.22),
+    0 0 180px 90px rgba(100, 140, 255, 0.09);
+  filter: blur(3px);
+  pointer-events: none;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.9s ease;
+  will-change: left, top, opacity;
+}
+
 /* ===== SCROLL REVEAL ===== */
 .reveal {
   opacity: 0;
@@ -763,9 +984,15 @@ footer {
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
+  :root { --bar-height: 40px; }
+
+  .celestial-body { font-size: 1.2rem; }
+
+  .time-ticks span { font-size: 0.45rem; }
+
   #hero {
     flex-direction: column;
-    padding-top: 6rem;
+    padding-top: calc(6rem + var(--bar-height));
     text-align: center;
     gap: 2.5rem;
   }
