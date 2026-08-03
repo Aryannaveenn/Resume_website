@@ -4,40 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aryan Naveen — Software Engineer</title>
-  <script>
-    // Set --day-mix before first paint to avoid a flash
-    // Transition zones: dawn 5–7 am, dusk 5–7 pm.
-    (function () {
-      var h = new Date().getHours() + new Date().getMinutes() / 60;
-      var mix = h < 5 ? 0 : h < 7 ? (h - 5) / 2 : h < 17 ? 1 : h < 19 ? (19 - h) / 2 : 0;
-      document.documentElement.style.setProperty('--day-mix', (mix * 100).toFixed(1) + '%');
-    })();
-  </script>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-
-  <!-- BACKGROUND CELESTIALS -->
-  <div class="bg-sun" id="bg-sun"></div>
-  <div class="bg-moon" id="bg-moon"></div>
-
-  <!-- TIME BAR -->
-  <div class="time-bar" id="time-bar">
-    <div class="celestial-body is-day" id="celestial">☀️</div>
-    <input type="range" id="time-slider" min="0" max="1439" value="720" aria-label="Time of day">
-    <div class="time-display">
-      <span class="time-hm" id="time-hm">12:00</span>
-      <span class="time-period" id="time-period">PM</span>
-    </div>
-    <div class="time-ticks">
-      <span>12am</span>
-      <span>6am</span>
-      <span>12pm</span>
-      <span>6pm</span>
-      <span>12am</span>
-    </div>
-  </div>
 
   <!-- NAV -->
   <nav>
@@ -145,7 +115,7 @@
                 Developed an AI-powered analytics panel using Anthropic APIs,
                 enabling natural-language querying of business data and
                 reducing time-to-insight by approximately 60% compared to
-                manual reporting.
+                manual reporting. Integrated rate limiting and caching to handle 100+ queries per day with sub-second response times.
               </li>
               <li>
                 Integrated email and SMS systems, enabling bulk outreach to
@@ -339,13 +309,34 @@
   <section id="education">
     <div class="container">
       <h3 class="section-label">Education</h3>
-      <div class="edu-card">
-        <div class="edu-icon">🎓</div>
-        <div class="edu-details">
-          <h4>Bachelor of Engineering (Software)</h4>
-          <p class="edu-school">University of New South Wales (UNSW)</p>
-          <p class="edu-sub">Sydney, Australia</p>
+      <div class="edu-roadmap">
+
+        <div class="edu-node">
+          <div class="edu-node-track">
+            <div class="edu-node-dot"></div>
+            <div class="edu-node-line"></div>
+          </div>
+          <div class="edu-node-body">
+            <span class="edu-node-date">2025</span>
+            <h4 class="edu-node-title">HSC</h4>
+            <p class="edu-node-sub">State Rank - Enterprise Computing</p>
+            <p class="edu-node-sub">Band 6 - Software Engineering</p>
+            <p class="edu-node-sub">Band 6 - Mathematics</p>
+          </div>
         </div>
+
+        <div class="edu-node edu-node--current">
+          <div class="edu-node-track">
+            <div class="edu-node-dot"></div>
+          </div>
+          <div class="edu-node-body">
+            <span class="edu-node-date">2026 &ndash; Present</span>
+            <h4 class="edu-node-title">Bachelor of Engineering (Software)</h4>
+            <p class="edu-node-sub">University of New South Wales (UNSW)</p>
+            <p class="edu-node-sub">Sydney, Australia</p>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -354,52 +345,15 @@
   <section id="skills">
     <div class="container">
       <h3 class="section-label">Skills</h3>
-      <div class="skills-grid">
-        <div class="skill-group">
-          <h4>Frontend</h4>
-          <div class="tag-row">
-            <span class="tag">JavaScript</span>
-            <span class="tag">React</span>
-            <span class="tag">HTML</span>
-            <span class="tag">CSS</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h4>Backend</h4>
-          <div class="tag-row">
-            <span class="tag">Node.js</span>
-            <span class="tag">Express.js</span>
-            <span class="tag">REST APIs</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h4>Database</h4>
-          <div class="tag-row">
-            <span class="tag">MongoDB</span>
-            <span class="tag">SQL</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h4>Cloud &amp; DevOps</h4>
-          <div class="tag-row">
-            <span class="tag">AWS EC2</span>
-            <span class="tag">RDS</span>
-            <span class="tag">S3</span>
-            <span class="tag">IAM</span>
-            <span class="tag">Git</span>
-            <span class="tag">Render</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h4>AI &amp; Integrations</h4>
-          <div class="tag-row">
-            <span class="tag">Claude MCP</span>
-            <span class="tag">AI Automation</span>
-            <span class="tag">Email &amp; SMS Integrations</span>
-            <span class="tag">SEO Optimisation</span>
-            <span class="tag">n8n Workflows &amp; Automations</span>
-          </div>
-        </div>
+      <div class="skills-canvas-wrap">
+        <canvas id="skills-web" aria-label="Interactive skills network graph"></canvas>
+      </div>
+      <div class="skills-legend">
+        <span class="legend-item"><span class="legend-dot" style="background:#2563eb"></span>Frontend</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#7c3aed"></span>Backend</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#0891b2"></span>Database</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#059669"></span>Cloud &amp; DevOps</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#b45309"></span>AI &amp; Integrations</span>
       </div>
     </div>
   </section>
@@ -413,21 +367,19 @@
         or just want to connect, feel free to reach out.
       </p>
       <p class="contact-info">
-        aryan.naveen4321@gmail.com
+        aryan.naveen4321@gmail.com <br>
+        +61 435 990 841
       </p>
-      <p>
-        +61 0435 990 841
-      </p>
-      <p></p>
       <a href="mailto:aryan.naveen4321@gmail.com" class="btn-primary">Say Hello</a>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <p>Designed &amp; built by Aryan Naveen &copy; 2025</p>
+    <p>Designed &amp; built by Aryan Naveen &copy; 2026</p>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
